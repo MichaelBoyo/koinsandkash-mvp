@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 
 export default function ButtonAppBar() {
@@ -45,7 +45,7 @@ export default function ButtonAppBar() {
             }}
             variant="contained"
           >
-            {window.location.pathname === "/" ? "Login" : "Register"}
+            {window.location.pathname === "/" ? "Log in" : "Sign Up"}
            
           </Button>
         </Toolbar>
