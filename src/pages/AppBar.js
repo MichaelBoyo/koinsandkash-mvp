@@ -5,8 +5,10 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
+import { useNavigate } from "react-router-dom";
 
 export default function ButtonAppBar() {
+  const navigate = useNavigate();
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -33,7 +35,7 @@ export default function ButtonAppBar() {
             component="div"
             sx={{ flexGrow: 1 }}
           ></Typography>
-          <Button sx={{
+          <Button onClick={()=> navigate(`/${window.location.pathname === "/" ? "login" : ""}`)} sx={{
                 backgroundColor: "white",
                 font: "bold",
                 color :"#1976d2"

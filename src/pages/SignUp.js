@@ -11,7 +11,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import "./SignUp.css";
+
 import AppBar from "@mui/material/AppBar";
 
 function Copyright(props) {
@@ -86,9 +86,8 @@ export default function SignUp() {
                   name="fullName"
                   fullWidth
                   focused
-                  pl
                   id="firstName"
-                //   label="Full Name"
+                  label="Full Name"
                   autoFocus
                 />
               </Grid>
