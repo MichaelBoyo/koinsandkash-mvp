@@ -19,11 +19,11 @@ const companySizeOptions = ['1-10', '11-30', '31-50', '50+'];
 export const Settings = () => {
   const formik = useFormik({
     initialValues: {
-      companyName: 'ACME Corp LLC.',
-      companySize: '1-10',
-      email: 'chen.simmons@acmecorp.com',
-      fullName: 'Chen Simmons',
-      jobTitle: 'Operation',
+      companyName: '',
+      companySize: '',
+      email: '',
+      fullName: '',
+      jobTitle: '',
       submit: null
     },
     validationSchema: Yup.object().shape({
