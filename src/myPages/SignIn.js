@@ -1,4 +1,4 @@
-import * as React from "react";
+import  React, {useContext} from "react";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
@@ -7,15 +7,14 @@ import Checkbox from "@mui/material/Checkbox";
 import { Link } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import IconButton from "@mui/material/IconButton";
-
-import DirectionsIcon from "@mui/icons-material/Directions";
 import AppBar from "@mui/material/AppBar";
-
+import { firebase } from "../api/firebase";
+import { useNavigate } from "react-router-dom";
+import { emailValidator, passwordValidator } from "../utils/validators";
+import {authContest} from "../store/AppContext";
 function Copyright(props) {
   return (
     <Typography
@@ -42,13 +41,60 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignUp() {
-  const handleSubmit = (event) => {
+  const context = useContext(authContest);
+  const [emailhelper, setEmailHelper] = React.useState("");
+  const [passwordhelper, setPasswordHelper] = React.useState("");
+  const [validInputs, setValidInputs] = React.useState(false);
+  const [error, setError] = React.useState(false);
+  const validateEmail = (email) => {
+    if (emailValidator(email)) {
+      setEmailHelper("");
+      setValidInputs(true);
+    } else {
+      setEmailHelper("Invalid Email");
+      setValidInputs(false);
+    }
+  };
+  const validatePassword = (email) => {
+ 
+    if (passwordValidator(email)) {
+      setPasswordHelper("");
+      setValidInputs(true);
+    } else {
+      setPasswordHelper(
+        "Password must contain Minimum eight characters, at least one uppercase letter, one lowercase letter and one number"
+      );
+      setValidInputs(false);
+    }
+  };
+  const navigate = useNavigate();
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+    if (validInputs) {
+      const data = new FormData(event.currentTarget);
+      const user = {
+        email: data.get("email"),
+        password: data.get("password"),
+      };
+     
+      const res = await firebase
+        .post("/accounts:signInWithPassword", {
+          ...user,
+          returnSecureToken: true,
+        })
+        .catch((err) => {
+          setError(true);
+          console.log(err);
+        });
+       
+      if (res.status === 200) {
+        navigate("/dashboard");
+        localStorage.setItem("user", JSON.stringify(res.data));
+        context.login(res.data.idToken);
+      } else {
+        setError(!error);
+      }
+    }
   };
 
   return (
@@ -69,7 +115,7 @@ export default function SignUp() {
             </Typography>
 
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              Log in to continue..
+              Please login to continue
             </Typography>
           </div>
         </AppBar>
@@ -92,15 +138,25 @@ export default function SignUp() {
           >
             <Grid container spacing={2}>
               <Grid item xs={12}>
+                <Typography
+                  variant="h6"
+                  component="div"
+                  sx={{ flexGrow: 1, color: "red" }}
+                >
+                  {error ? "Invalid Credentials" : ""}
+                </Typography>
+              </Grid>
+              <Grid item xs={12}>
                 <TextField
                   fullWidth
                   focused
                   type="text"
                   label="Email or Phone Number"
-                  name="Email"
+                  name="email"
                   id="email"
                   autoComplete="example@mail.com"
-                  helperText=""
+                  helperText={emailhelper}
+                  onChange={(e) => validateEmail(e.target.value)}
                 />
               </Grid>
 
@@ -113,13 +169,15 @@ export default function SignUp() {
                   type="password"
                   id="password"
                   autoComplete="new-password"
+                  helperText={passwordhelper}
+                  onChange={(e) => validatePassword(e.target.value)}
                 />
-                <IconButton color="primary" aria-label="directions">
+                {/* <IconButton color="primary" aria-label="directions">
                   <Typography variant="h6" component="h1" sx={{ flexGrow: 1 }}>
                     use login link instead
                   </Typography>
                   <DirectionsIcon />
-                </IconButton>
+                </IconButton> */}
               </Grid>
 
               <Grid item xs={12}>
