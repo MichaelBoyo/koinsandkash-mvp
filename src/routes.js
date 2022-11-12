@@ -11,9 +11,17 @@ import Store from './pages/Store';
 import ForgotPassword from './myPages/ForgotPassword';
 import { Payments } from "./pages/Payments";
 import AppBar from "./myPages/AppBar";
+import LandingPage from "./pages/LandingPage"
+import { Faq } from "./pages/Faq";
+import { Support } from "./pages/Support";
+import { Agent } from "./pages/Agent";
 export const routes = [
   {
-    path: '/',
+    path: "/",
+    element: <LandingPage/>,
+  },
+  {
+    path: '/app',
     element: <AppBar />,
     children: [
       {
@@ -28,6 +36,18 @@ export const routes = [
       {
         path: 'forgot-password',
         element: <ForgotPassword />,
+      },
+      {
+        path: 'agents',
+        element: <Agent />,
+      },
+      {
+        path: 'support',
+        element: <Support />,
+      },
+      {
+        path: 'faq',
+        element: <Faq />,
       },
     ]
   },

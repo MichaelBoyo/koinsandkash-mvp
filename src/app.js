@@ -2,7 +2,7 @@ import { useRoutes } from "react-router-dom";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { theme } from "./theme";
 import { routes } from "./routes";
-import WhatsApp from "./components/Whatsapp";
+import Whatsapp from "./components/Whatsapp";
 import AuthProvider from "./store/AppContext";
 
 const App = () => {
@@ -13,7 +13,9 @@ const App = () => {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         {content}
-        <WhatsApp />
+        <div>
+          <Whatsapp />
+        </div>
       </ThemeProvider>
     </AuthProvider>
   );

@@ -47,6 +47,7 @@ export const Layout =  () => {
           <Footer />
         </LayoutContainer>
       </LayoutContent>
+     
     </LayoutRoot>
   );
 };
