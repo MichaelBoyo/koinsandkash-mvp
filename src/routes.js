@@ -7,6 +7,7 @@ import { NotFound } from './pages/not-found';
 import { Orders } from './pages/orders';
 import { Reports } from './pages/reports';
 import { Settings } from './pages/settings';
+import Store from './pages/Store';
 import ForgotPassword from './myPages/ForgotPassword';
 
 import AppBar from "./myPages/AppBar";
@@ -46,6 +47,10 @@ export const routes = [
       {
         path: 'settings',
         element: <Settings />
+      },
+      {
+        path: 'store',
+        element: <Store />
       },
      
       {

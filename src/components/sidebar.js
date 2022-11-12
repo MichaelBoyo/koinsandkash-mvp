@@ -1,10 +1,9 @@
 import { Link as RouterLink, matchPath, useLocation } from 'react-router-dom';
 import { Drawer, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import { Cog as CogIcon } from '../icons/cog';
-
 import { ShoppingCart as ShoppingCartIcon } from '../icons/shopping-cart';
 import { User as UserIcon } from '../icons/user';
-
+import { Star as BarChartIcon } from '../icons/star';
 const items = [
   {
     href: '/dashboard',
@@ -17,10 +16,16 @@ const items = [
     label: 'Orders'
   },
   {
+    href: '/dashboard/store',
+    icon: BarChartIcon,
+    label: 'store'
+  },
+  {
     href: '/dashboard/settings',
     icon: CogIcon,
     label: 'Settings'
   },
+ 
  
  
 ];
