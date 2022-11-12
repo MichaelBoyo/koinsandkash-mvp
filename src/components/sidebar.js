@@ -3,7 +3,8 @@ import { Drawer, List, ListItem, ListItemIcon, ListItemText } from '@mui/materia
 import { Cog as CogIcon } from '../icons/cog';
 import { ShoppingCart as ShoppingCartIcon } from '../icons/shopping-cart';
 import { User as UserIcon } from '../icons/user';
-import { Star as BarChartIcon } from '../icons/star';
+
+import StorefrontIcon from '@mui/icons-material/Storefront';
 const items = [
   {
     href: '/dashboard',
@@ -17,7 +18,7 @@ const items = [
   },
   {
     href: '/dashboard/store',
-    icon: BarChartIcon,
+    icon: StorefrontIcon,
     label: 'store'
   },
   {
