@@ -4,7 +4,7 @@ import logo from "../kk.png"
 
 export default function App() {
     const props = {
-        phoneNumber: '+2348103297538',
+        phoneNumber: '+2348175486452',
         accountName: 'Koins$kash',
         avatar : logo
     }
