@@ -59,7 +59,7 @@ const Orders = () => {
             }}
           >
             <Typography color="textPrimary" variant="h4">
-              Manage your store
+              Store
             </Typography>
             <Box sx={{ flexGrow: 1 }} />
             <Button color="primary" size="large" variant="contained">
