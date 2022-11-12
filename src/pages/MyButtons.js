@@ -75,7 +75,7 @@ export default function SimpleBottomNavigation() {
           })}
         </BottomNavigation>
       </Box>
-      <Box sx={{ pb: 8 }}></Box>
+      <Box sx={{ pt: 2 }}></Box>
       <Box
         sx={{
           bgcolor: "transparent",

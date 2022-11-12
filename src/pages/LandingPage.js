@@ -31,7 +31,7 @@ const LandingPage = () => {
     <div className="landing">
       <CssBaseline />
       <Container maxWidth="sm">
-        <Box sx={{ height: "100vh", pt:7  }}>
+        <Box sx={{ height: "100vh"  }}>
           <CardMedia
             component="img"
             image="https://res.cloudinary.com/dfsn2ob9s/image/upload/v1667745789/Koinsandkash_wyo6en.png"
@@ -51,7 +51,7 @@ const LandingPage = () => {
               );
             })}
 
-            <Box sx={{ pb: 5 }}></Box>
+            <Box sx={{ pb: 2 }}></Box>
             <MyButtons />
           </CardContent>
         </Box>
