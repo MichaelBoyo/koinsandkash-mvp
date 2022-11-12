@@ -2,7 +2,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { Box, Button, Container, Typography } from '@mui/material';
 import { EmojiSadOutlined as EmojiSadIcon } from '../icons/emoji-sad-outlined';
 
-export const NotFound = () => (
+export const Payments = () => (
   <Box sx={{ backgroundColor: 'background.default' }}>
     <Container
       maxWidth="md"
@@ -21,14 +21,14 @@ export const NotFound = () => (
         sx={{ my: 2 }}
         variant="h3"
       >
-        Nothing here!
+        Coming soon !
       </Typography>
       <Typography
         align="center"
         color="textSecondary"
         variant="body2"
       >
-        The page requested does not exist.
+        Our engineers are still working on this page.
       </Typography>
       <Button
         color="primary"

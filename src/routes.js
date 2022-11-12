@@ -9,7 +9,7 @@ import { Reports } from './pages/reports';
 import { Settings } from './pages/settings';
 import Store from './pages/Store';
 import ForgotPassword from './myPages/ForgotPassword';
-
+import { Payments } from "./pages/Payments";
 import AppBar from "./myPages/AppBar";
 export const routes = [
   {
@@ -51,6 +51,10 @@ export const routes = [
       {
         path: 'store',
         element: <Store />
+      },
+      {
+        path: 'payments',
+        element: <Payments />
       },
      
       {
