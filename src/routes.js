@@ -15,6 +15,7 @@ import LandingPage from "./pages/LandingPage"
 import { Faq } from "./pages/Faq";
 import { Support } from "./pages/Support";
 import { Agent } from "./pages/Agent";
+
 export const routes = [
   {
     path: "/",
