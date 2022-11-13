@@ -19,13 +19,13 @@ import { latestOrders } from "../__mocks__/reports";
 
 const stats = [
   {
-    content: "$3450",
+    content: "₦ 3,450,780",
     icon: CubeIcon,
     label: "Genesis Fund",
   },
 
   {
-    content: "$3456",
+    content: "₦ 5,000,634",
     icon: CashIcon,
     label: "Transactions",
   },

@@ -4,23 +4,23 @@ import { useTheme } from '@mui/material/styles';
 
 const stats = [
   {
-    content: '€4,800.00',
+    content: '₦ 4,800.00',
     label: 'Revenue'
   },
   {
-    content: '€4,900,24',
+    content: '₦ 4,900,24',
     label: 'NET'
   },
   {
-    content: '€1,600.50',
+    content: '₦ 1,600.50',
     label: 'Pending orders'
   },
   {
-    content: '€6,900.10',
+    content: '₦ 6,900.10',
     label: 'Due'
   },
   {
-    content: '€6,500.80',
+    content: '₦ 6,500.80',
     label: 'Overdue'
   }
 ];
