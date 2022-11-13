@@ -1,6 +1,6 @@
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { AppBar, Avatar, Box, Toolbar } from "@mui/material";
-import LogoutIcon from '@mui/icons-material/Logout';
+import LogoutIcon from "@mui/icons-material/Logout";
 import Button from "@mui/material/Button";
 export const Navbar = () => {
   const navigate = useNavigate();
@@ -34,13 +34,11 @@ export const Navbar = () => {
 
         <Box sx={{ flexGrow: 1 }} />
 
-        <Avatar alt="User" src="/static/user-chen_simmons.png" />
-
         <Button
-        endIcon={<LogoutIcon />}
-        sx={{
-          ml: 1
-        }}
+          endIcon={<LogoutIcon />}
+          sx={{
+            ml: 1,
+          }}
           onClick={() => {
             localStorage.removeItem("user");
             navigate("/");
