@@ -1,39 +1,61 @@
-import { Link as RouterLink, matchPath, useLocation } from 'react-router-dom';
-import { Drawer, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
-import { Cog as CogIcon } from '../icons/cog';
-import { ShoppingCart as ShoppingCartIcon } from '../icons/shopping-cart';
-import { User as UserIcon } from '../icons/user';
-import PriceChangeIcon from '@mui/icons-material/PriceChange';
-import StorefrontIcon from '@mui/icons-material/Storefront';
+import { Link as RouterLink, matchPath, useLocation } from "react-router-dom";
+import {
+  Drawer,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
+import { Cog as CogIcon } from "../icons/cog";
+import { ShoppingCart as ShoppingCartIcon } from "../icons/shopping-cart";
+import { User as UserIcon } from "../icons/user";
+import PriceChangeIcon from "@mui/icons-material/PriceChange";
+import StorefrontIcon from "@mui/icons-material/Storefront";
+import SellIcon from "@mui/icons-material/Sell";
+import { StarHalfIcon } from "@mui/icons-material";
 const items = [
   {
-    href: '/dashboard',
+    href: "/dashboard",
     icon: UserIcon,
-    label: 'Dashboard'
+    label: "Dashboard",
   },
   {
-    href: '/dashboard/orders',
-    icon: ShoppingCartIcon,
-    label: 'Orders'
+    href: "/dashboard.assets",
+    icon: UserIcon,
+    label: "Financial Assets",
   },
   {
-    href: '/dashboard/store',
-    icon: StorefrontIcon,
-    label: 'store'
+    href: "/dashboard/transfers",
+    icon: UserIcon,
+    label: 'Global Transfers',
   },
   {
-    href: '/dashboard/payments',
-    icon: PriceChangeIcon,
-    label: 'payments'
+    href: "/dashboard/exchange",
+    icon: UserIcon,
+    label: "Exchange Currency",
   },
   {
-    href: '/dashboard/settings',
+    href: "/dashboard/vendors",
+    icon: SellIcon,
+    label: "Vendors",
+  },
+
+  {
+    href: "/dashboard/credit",
+    icon: UserIcon,
+    label: "Credit",
+  },
+
+  {
+    href: "/dashboard/settings",
     icon: CogIcon,
-    label: 'Settings'
+    label: "Settings",
   },
- 
- 
- 
+  {
+    href: "/dashboard/learning",
+    icon: UserIcon,
+    label: "Discover..",
+  },
 ];
 
 export const Sidebar = () => {
@@ -46,19 +68,22 @@ export const Sidebar = () => {
       variant="permanent"
       PaperProps={{
         sx: {
-          backgroundColor: 'background.paper',
-          display: 'flex',
-          flexDirection: 'column',
-          height: 'calc(100% - 64px)',
+          backgroundColor: "background.paper",
+          display: "flex",
+          flexDirection: "column",
+          height: "calc(100% - 64px)",
           p: 1,
           top: 64,
-          width: 73
-        }
+          width: 73,
+        },
       }}
     >
-      <List sx={{ width: '100%' }}>
+      <List sx={{ width: "100%" }}>
         {items.map(({ href, icon: Icon, label }) => {
-          const active = matchPath({ path: href, end: true }, location.pathname);
+          const active = matchPath(
+            { path: href, end: true },
+            location.pathname
+          );
 
           return (
             <ListItem
@@ -67,19 +92,19 @@ export const Sidebar = () => {
               key={href}
               to={href}
               sx={{
-                flexDirection: 'column',
-                color: active ? 'primary.main' : 'text.secondary',
+                flexDirection: "column",
+                color: active ? "primary.main" : "text.secondary",
                 px: 2,
                 py: 1.5,
-                '&:hover': {
-                  color: 'primary.main'
-                }
+                "&:hover": {
+                  color: "primary.main",
+                },
               }}
             >
               <ListItemIcon
                 sx={{
-                  minWidth: 'auto',
-                  color: 'inherit'
+                  minWidth: "auto",
+                  color: "inherit",
                 }}
               >
                 <Icon />
@@ -89,9 +114,9 @@ export const Sidebar = () => {
                 primaryTypographyProps={{
                   sx: {
                     pb: 0,
-                    pt: 1.25
+                    pt: 1.25,
                   },
-                  variant: 'caption'
+                  variant: "caption",
                 }}
               />
             </ListItem>

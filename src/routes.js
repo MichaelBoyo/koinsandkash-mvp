@@ -15,6 +15,7 @@ import LandingPage from "./pages/LandingPage"
 import { Faq } from "./pages/Faq";
 import { Support } from "./pages/Support";
 import { Agent } from "./pages/Agent";
+import Welcome from "./pages/Welcome";
 
 export const routes = [
   {
@@ -37,6 +38,10 @@ export const routes = [
       {
         path: 'forgot-password',
         element: <ForgotPassword />,
+      },
+      {
+        path: 'welcome',
+        element: <Welcome />,
       },
       {
         path: 'agents',

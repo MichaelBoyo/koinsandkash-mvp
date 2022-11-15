@@ -13,9 +13,9 @@ const App = () => {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         {content}
-        <div>
+        {/* <div>
           <Whatsapp />
-        </div>
+        </div> */}
       </ThemeProvider>
     </AuthProvider>
   );

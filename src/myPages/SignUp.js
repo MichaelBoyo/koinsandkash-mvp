@@ -84,7 +84,7 @@ export default function SignUp() {
         });
 
       if (res.status === 200) {
-        navigate("/");
+        navigate("/app/welcome");
         await firebase.post("/accounts:sendOobCode", {
           requestType: "VERIFY_EMAIL",
           idToken: res.data.idToken,
@@ -140,8 +140,12 @@ export default function SignUp() {
           >
             <Grid container spacing={2}>
               <Grid item xs={12}>
-                <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: "red" }}>
-                 {error}
+                <Typography
+                  variant="h6"
+                  component="div"
+                  sx={{ flexGrow: 1, color: "red" }}
+                >
+                  {error}
                 </Typography>
               </Grid>
 
@@ -234,14 +238,8 @@ export default function SignUp() {
             >
               Create Account
             </Button>
-            <Grid container justifyContent="flex-end">
-              <Grid item>
-                <Link to="/login">Already have an account? Sign in</Link>
-              </Grid>
-            </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 5 }} />
       </Container>
     </ThemeProvider>
   );
