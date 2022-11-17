@@ -141,7 +141,7 @@ export default function BasicPopover({ name, myOrders, setMyOrders}) {
                     helperText={
                       formik.touched.jobTitle && formik.errors.jobTitle
                     }
-                    label="Accounr No"
+                    label="Account No"
                     name="jobTitle"
                     onBlur={formik.handleBlur}
                     onChange={formik.handleChange}

@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "@mui/material/Button";
 import axios from "axios";
-
+import Alert from "@mui/material/Alert";
 const seerbit = axios.create({
   baseURL:
     "https://sandbox-api.oneliquidity.technology/integrator/v1/deposit/float",
@@ -12,7 +12,7 @@ const seerbit = axios.create({
   },
 });
 const Seerbit = ({ amount, handleClose, myOrders, setMyOrders }) => {
- 
+  const [isLoaded, setIsLoaded] = React.useState(false);
   const seerbitPay = () => {
     const fetch = async () => {
       const res = await seerbit
@@ -21,25 +21,33 @@ const Seerbit = ({ amount, handleClose, myOrders, setMyOrders }) => {
           currency: "USD",
         })
         .catch((err) => console.log(err));
-  
-      if (res.status === 201){
-        setMyOrders([...myOrders,  {
-          id: Math.floor(1000 + Math.random() * 9000),
-          createdAt: Date.now(),
-          status: "One Liquidity",
-          totalAmount: amount,
-        }]);
-        handleClose();
-        alert("payment success check your email ")
+
+      if (res.status === 201) {
+        setMyOrders([
+          ...myOrders,
+          {
+            id: Math.floor(1000 + Math.random() * 9000),
+            createdAt: Date.now(),
+            status: "One Liquidity",
+            totalAmount: amount,
+          },
+        ]);
+        setIsLoaded(true);
+    
+     
       }
     };
     fetch();
   };
+  if (isLoaded) {
+    return (
+      <Alert severity="success">Payment successful</Alert>
+    );
+  }
   return (
     <Button onClick={seerbitPay} variant="contained">
-     Make payment
+      Make payment
     </Button>
-    
   );
 };
 
