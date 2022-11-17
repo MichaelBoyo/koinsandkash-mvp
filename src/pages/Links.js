@@ -13,12 +13,12 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-
+import OneLiquidity from "./OneLiquidity";
 const companySizeOptions = ["BTC", "USDT", "ETH", "BNB"];
 
-export default function BasicPopover({ name }) {
+export default function BasicPopover({ name, myOrders, setMyOrders}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
-
+ 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -63,10 +63,7 @@ export default function BasicPopover({ name }) {
       }
     },
   });
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(formik.values);
-  }
+ 
   return (
     <div>
       <Button aria-describedby={id} variant="contained" onClick={handleClick}>
@@ -209,15 +206,7 @@ export default function BasicPopover({ name }) {
                     </Typography>
                 </Grid>
                 <Grid item xs={12}>
-                  <Button
-                    color="primary"
-                    size="large"
-                    type="submit"
-                    variant="contained"
-                    onClick={handleSubmit}
-                  >
-                    Make Payment
-                  </Button>
+                 <OneLiquidity myOrders={myOrders} setMyOrders={setMyOrders} handleClose={handleClose} amount={formik.values.fullName}/>
                 </Grid>
               </Grid>
             </div>

@@ -35,14 +35,7 @@ export const Exchange = () => {
   const [query, setQuery] = useState("");
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [page, setPage] = useState(0);
-  const [myOrders, setMyOrders] = useState([
-    {
-      id: "5273",
-      createdAt: new Date("2021-06-02T14:32:45.475Z"),
-      status: "One Liquidity",
-      totalAmount: 192.5,
-    },
-  ]);
+  const [myOrders, setMyOrders] = useState([]);
 
   const handleModeChange = (event, newMode) => {
     if (newMode) {
@@ -91,7 +84,13 @@ export const Exchange = () => {
                 <SummaryItem
                   content={item.content}
                   icon={item.icon}
-                  button={<Links myOrders={myOrders} setMyOrders={setMyOrders} name={item.content} />}
+                  button={
+                    <Links
+                      myOrders={myOrders}
+                      setMyOrders={setMyOrders}
+                      name={item.content}
+                    />
+                  }
                   label={item.label}
                 />
               </Grid>
