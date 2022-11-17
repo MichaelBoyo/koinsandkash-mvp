@@ -88,6 +88,7 @@ export default function SignUp() {
         });
        
       if (res.status === 200) {
+        
         navigate("/dashboard");
         localStorage.setItem("user", JSON.stringify(res.data));
         context.login(res.data.idToken);
@@ -203,7 +204,7 @@ export default function SignUp() {
                   style={{
                     textDecoration: "none",
                   }}
-                  to="/forgot-password"
+                  to="/app/forgot-password"
                 >
                   Forgot Password?
                 </Link>

@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types';
-import { Link as RouterLink } from 'react-router-dom';
-import { format } from 'date-fns';
+import PropTypes from "prop-types";
+import { Link as RouterLink } from "react-router-dom";
+import { format } from "date-fns";
 import {
   Box,
   Chip,
@@ -10,51 +10,61 @@ import {
   TableCell,
   TableHead,
   TableRow,
-  Typography
-} from '@mui/material';
-import { Scrollbar } from './scrollbar';
+  Typography,
+} from "@mui/material";
+import { Scrollbar } from "./scrollbar";
 
 const statusVariants = [
   {
-    label: 'Placed',
-    value: 'placed'
+    label: "Placed",
+    value: "placed",
   },
   {
-    label: 'Processed',
-    value: 'processed'
+    label: "Processed",
+    value: "processed",
   },
   {
-    label: 'Delivered',
-    value: 'delivered'
+    label: "Successful",
+    value: "delivered",
   },
   {
-    label: 'Complete',
-    value: 'complete'
-  }
+    label: "One Liquidity",
+    value: "One Liquidity",
+  },
+  {
+    label: "Complete",
+    value: "complete",
+  },
 ];
 
 export const OrdersTable = (props) => {
-  const { orders } = props;
+  const { orders, tableHeaders } = props;
 
   return (
     <div>
       <Scrollbar>
         <Table sx={{ minWidth: 1000 }}>
           <TableHead>
-            <TableRow>
-              <TableCell>
-                Order
-              </TableCell>
-              <TableCell>
-                Date
-              </TableCell>
-              <TableCell>
-                Customer
-              </TableCell>
-              <TableCell>
-                Status
-              </TableCell>
-            </TableRow>
+            {tableHeaders ? (
+              <TableRow>
+                {tableHeaders.map((header) => {
+                  return (
+                    <TableCell key={header}>
+                      <Typography color="textPrimary" variant="subtitle2">
+                        {header}
+                      </Typography>
+                    </TableCell>
+                  );
+                })}
+              </TableRow>
+            ) : (
+              <TableRow>
+                <TableCell>Order</TableCell>
+                <TableCell>Date</TableCell>
+                <TableCell>Customer</TableCell>
+                <TableCell>Status</TableCell>
+              </TableRow>
+            )}
           </TableHead>
           <TableBody>
             {orders.map((order) => {
@@ -77,28 +87,21 @@ export const OrdersTable = (props) => {
                   </TableCell>
                   <TableCell>
                     <Box>
-                      <Typography
-                        color="inherit"
-                        variant="inherit"
-                      >
-                        {format(new Date(order.createdAt), 'dd MMM yyyy')}
+                      <Typography color="inherit" variant="inherit">
+                        {format(new Date(order.createdAt), "dd MMM yyyy")}
                       </Typography>
-                      <Typography
-                        color="textSecondary"
-                        variant="inherit"
-                      >
-                        {format(new Date(order.createdAt), 'HH:mm')}
+                      <Typography color="textSecondary" variant="inherit">
+                        {format(new Date(order.createdAt), "HH:mm")}
                       </Typography>
                     </Box>
                   </TableCell>
                   <TableCell>
-                    {`${order.customer.firstName} ${order.customer.lastName}`}
+                    {tableHeaders
+                      ? `${order.totalAmount} `
+                      : `${order.customer.firstName} ${order.customer.lastName}`}
                   </TableCell>
                   <TableCell>
-                    <Chip
-                      label={statusVariant.label}
-                      variant="outlined"
-                    />
+                    <Chip label={statusVariant.label} variant="outlined" />
                   </TableCell>
                 </TableRow>
               );
@@ -111,5 +114,5 @@ export const OrdersTable = (props) => {
 };
 
 OrdersTable.propTypes = {
-  orders: PropTypes.array.isRequired
+  orders: PropTypes.array.isRequired,
 };

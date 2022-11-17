@@ -47,6 +47,7 @@ export default function SignUp() {
       returnSecureToken: true,
     });
     if (res.status === 200) {
+      alert("Password reset link sent to your email");
       navigate("/login");
     }
   };

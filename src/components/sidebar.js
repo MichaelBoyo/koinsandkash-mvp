@@ -12,7 +12,10 @@ import { User as UserIcon } from "../icons/user";
 import PriceChangeIcon from "@mui/icons-material/PriceChange";
 import StorefrontIcon from "@mui/icons-material/Storefront";
 import SellIcon from "@mui/icons-material/Sell";
-import { StarHalfIcon } from "@mui/icons-material";
+
+import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
+import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
+import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
 const items = [
   {
     href: "/dashboard",
@@ -20,18 +23,18 @@ const items = [
     label: "Dashboard",
   },
   {
-    href: "/dashboard.assets",
-    icon: UserIcon,
+    href: "/dashboard/assets",
+    icon: BusinessCenterIcon,
     label: "Financial Assets",
   },
   {
     href: "/dashboard/transfers",
-    icon: UserIcon,
+    icon: PriceChangeIcon,
     label: 'Global Transfers',
   },
   {
     href: "/dashboard/exchange",
-    icon: UserIcon,
+    icon: CurrencyExchangeIcon,
     label: "Exchange Currency",
   },
   {
@@ -42,7 +45,7 @@ const items = [
 
   {
     href: "/dashboard/credit",
-    icon: UserIcon,
+    icon: CardGiftcardIcon,
     label: "Credit",
   },
 

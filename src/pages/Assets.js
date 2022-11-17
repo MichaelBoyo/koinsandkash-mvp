@@ -12,8 +12,25 @@ import {
 import { OrdersFilter } from "../components/orders/orders-filter";
 import { OrdersTable } from "../components/orders-table";
 import { orders } from "../__mocks__/orders";
-import { Adjustments as AdjustmentsIcon } from '../icons/adjustments';
-const Orders = () => {
+import { Cube as CubeIcon } from "../icons/cube";
+import { SummaryItem } from "../components/reports/summary-item";
+import { Grid } from "@mui/material";
+import { Cash as CashIcon } from "../icons/cash";
+import SavingsLink from "./SavingsLink";
+const tableHeaders = ["Order ID", "Date", "Amount ($)", "Status"];
+const stats = [
+  {
+    content: "Investment",
+    icon: CubeIcon,
+    label: "INV",
+  },
+  {
+    content: "Savings",
+    icon: CashIcon,
+    label: "SVN",
+  },
+];
+export const Assets = () => {
   const [mode, setMode] = useState("table");
   const [query, setQuery] = useState("");
   const [rowsPerPage, setRowsPerPage] = useState(5);
@@ -41,7 +58,7 @@ const Orders = () => {
   return (
     <>
       <Helmet>
-        <title>Store | Koins&Kash</title>
+        <title>Financial Assets | Koins&Kash</title>
       </Helmet>
       <Box
         sx={{
@@ -51,6 +68,9 @@ const Orders = () => {
         }}
       >
         <Container maxWidth="lg">
+          <Typography color="textPrimary" variant="h4">
+            Financial Assets
+          </Typography>
           <Box
             sx={{
               alignItems: "center",
@@ -58,31 +78,31 @@ const Orders = () => {
               mb: 3,
             }}
           >
-            <Typography color="textPrimary" variant="h4">
-              Store
-            </Typography>
-            <Box sx={{ flexGrow: 1 }} />
-            <Button color="primary" size="large" variant="contained">
-              Add Item
-            </Button>
-            <Button
-              color="primary"
-              startIcon={<AdjustmentsIcon />}
-              size="large"
-              sx={{ order: 3 }}
-            >
-              Edit store info
-            </Button>
+            {stats.map((item) => (
+              <Grid item key={item.label} md={4} xs={12}>
+                <SummaryItem
+                  content={item.content}
+                  icon={item.icon}
+                  button={<SavingsLink name={item.content} />}
+                  label={item.label}
+                />
+              </Grid>
+            ))}
           </Box>
+
           <Card variant="outlined">
+            <Typography sx={{ ml: 2, mt: 1 }} color="textPrimary" variant="h4">
+              Savings and Investment History
+            </Typography>
             <OrdersFilter
               mode={mode}
               onModeChange={handleModeChange}
               onQueryChange={handleQueryChange}
               query={query}
             />
+
             <Divider />
-            {/* <OrdersTable orders={orders} /> */}
+            <OrdersTable tableHeaders={tableHeaders} orders={orders} />
             <Divider />
             <TablePagination
               rowsPerPageOptions={[5, 10, 25]}
@@ -99,5 +119,3 @@ const Orders = () => {
     </>
   );
 };
-
-export default Orders;

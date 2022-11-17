@@ -4,10 +4,10 @@ import { Layout } from './components/layout';
 import SignUp from './myPages/SignUp';
 import SignIn from './myPages/SignIn';
 import { NotFound } from './pages/not-found';
-import { Orders } from './pages/orders';
+import { Exchange } from './pages/exchange';
 import { Reports } from './pages/reports';
 import { Settings } from './pages/settings';
-import Store from './pages/Store';
+import {Assets} from './pages/Assets';
 import ForgotPassword from './myPages/ForgotPassword';
 import { Payments } from "./pages/Payments";
 import AppBar from "./myPages/AppBar";
@@ -67,16 +67,16 @@ export const routes = [
         element: <Reports />
       },
       {
-        path: 'orders',
-        element: <Orders />
+        path: 'exchange',
+        element: <Exchange />
       },
       {
         path: 'settings',
         element: <Settings />
       },
       {
-        path: 'store',
-        element: <Store />
+        path: 'assets',
+        element: <Assets />
       },
       {
         path: 'payments',

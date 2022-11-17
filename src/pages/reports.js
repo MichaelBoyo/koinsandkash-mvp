@@ -16,7 +16,7 @@ import { Cube as CubeIcon } from "../icons/cube";
 import { PerformanceIndicators } from "../components/reports/performance-indicators";
 import { Cash as CashIcon } from "../icons/cash";
 import { latestOrders } from "../__mocks__/reports";
-import PriceChangeIcon from '@mui/icons-material/PriceChange';
+
 const stats = [
   {
     content: "22 million naira transacted",

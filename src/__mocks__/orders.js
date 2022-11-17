@@ -5,6 +5,7 @@ export const orders = [
     createdAt: new Date('2021-06-02T14:32:45.475Z'),
     currency: 'USD',
     currencySymbol: '$',
+    
     customer: {
       city: 'New York',
       country: 'USA',

@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { Avatar, Box, Card, Typography } from "@mui/material";
 
 export const SummaryItem = (props) => {
-  const { content, icon: Icon, label, ...other } = props;
+  const { content, icon: Icon, label, button, ...other } = props;
 
   return (
     <Card sx={{ height: "100%" }} variant="outlined" {...other}>
@@ -35,9 +35,15 @@ export const SummaryItem = (props) => {
           <Typography color="textSecondary" variant="overline">
             {label}
           </Typography>
-          <Typography color="textPrimary" variant="h6">
-            {content}
-          </Typography>
+          {button ? (
+            <Typography color="textPrimary" variant="h6">
+              {button}
+            </Typography>
+          ) : (
+            <Typography color="textPrimary" variant="h6">
+              {content}
+            </Typography>
+          )}
         </div>
       </Box>
     </Card>
