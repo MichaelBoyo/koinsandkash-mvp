@@ -18,6 +18,9 @@ const stats = [
   {
     content: "Pay vendor",
   },
+  {
+    content: "Create Payment Link",
+  }
 ];
 export const Vendor = () => {
   const data = JSON.parse(localStorage.getItem("vendor"))
