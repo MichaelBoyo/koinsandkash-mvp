@@ -1,5 +1,7 @@
 import axios from "axios";
-import { Button } from "@mui/material";
+import { useState } from "react";
+import SendIcon from "@mui/icons-material/Send";
+import LoadingButton from "@mui/lab/LoadingButton";
 const oneLiquidity = axios.create({
   baseURL:
     "https://sandbox-api.oneliquidity.technology/integrator/v1/deposit/float",
@@ -16,6 +18,7 @@ const OneLiquidity = ({
   name,
   setSuccessPay,
   handleClose,
+  type
 }) => {
   const oneLiquidityPay = () => {
     const fetch = async () => {
@@ -31,6 +34,7 @@ const OneLiquidity = ({
           createdAt: Date.now(),
           status: "One Liquidity",
           totalAmount: amount,
+          type
         };
 
         localStorage.setItem(name, JSON.stringify([...myOrders, data]));
@@ -41,11 +45,22 @@ const OneLiquidity = ({
     };
     fetch();
   };
+  const [loading, setLoading] = useState(false);
+  async function handleClick() {
+    setLoading(true);
+    oneLiquidityPay();
+  }
 
   return (
-    <Button onClick={oneLiquidityPay} variant="contained">
-      Make payment
-    </Button>
+    <LoadingButton
+      onClick={handleClick}
+      endIcon={<SendIcon />}
+      loading={loading}
+      loadingPosition="end"
+      variant="contained"
+    >
+      Make Payment
+    </LoadingButton>
   );
 };
 

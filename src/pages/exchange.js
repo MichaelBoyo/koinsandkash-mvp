@@ -9,7 +9,7 @@ import { SummaryItem } from "../components/reports/summary-item";
 import { Grid } from "@mui/material";
 import { Cash as CashIcon } from "../icons/cash";
 import Links from "./Links";
-const tableHeaders = ["Order ID", "Date", "Amount ($)", "Payment Gateway"];
+const tableHeaders = ["Gateway", "Amount ($)","Type", "Date", "Order Id"];
 const stats = [
   {
     content: "Crypto to Naira",

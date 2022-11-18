@@ -224,12 +224,12 @@ export default function BasicPopover({
                     value={formik.values.assets}
                     variant="outlined"
                   >
-                    {assets.map((transactionTypeOption) => (
+                    {assets.map((asset) => (
                       <MenuItem
-                        key={transactionTypeOption}
-                        value={transactionTypeOption}
+                        key={asset}
+                        value={asset}
                       >
-                        {transactionTypeOption}
+                        {asset}
                       </MenuItem>
                     ))}
                   </TextField>
@@ -256,6 +256,7 @@ export default function BasicPopover({
                     amount={formik.values.amount}
                     setSuccessPay={setSuccessPay}
                     handleClose={handleClose}
+                    type={formik.values.transactionType}
                   />
                 </Grid>
               </Grid>

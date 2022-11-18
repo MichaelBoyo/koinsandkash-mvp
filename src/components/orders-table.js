@@ -1,10 +1,8 @@
 import PropTypes from "prop-types";
-import { Link as RouterLink } from "react-router-dom";
 import { format } from "date-fns";
 import {
   Box,
   Chip,
-  Link,
   Table,
   TableBody,
   TableCell,
@@ -70,16 +68,10 @@ export const OrdersTable = (props) => {
               return (
                 <TableRow key={order.id}>
                   <TableCell>
-                    <Link
-                      color="inherit"
-                      component={RouterLink}
-                      to="#"
-                      underline="none"
-                      variant="subtitle2"
-                    >
-                      {`#${order.id}`}
-                    </Link>
+                    <Chip label={statusVariant.label} variant="outlined" />
                   </TableCell>
+                  <TableCell>{order.totalAmount}</TableCell>
+                  <TableCell>{order.type}</TableCell>
                   <TableCell>
                     <Box>
                       <Typography color="inherit" variant="inherit">
@@ -90,9 +82,11 @@ export const OrdersTable = (props) => {
                       </Typography>
                     </Box>
                   </TableCell>
-                  <TableCell>{order.totalAmount}</TableCell>
+
                   <TableCell>
-                    <Chip label={statusVariant.label} variant="outlined" />
+                    <Typography color="inherit" variant="inherit">
+                      #{order.id}
+                    </Typography>
                   </TableCell>
                 </TableRow>
               );

@@ -9,7 +9,7 @@ import { SummaryItem } from "../components/reports/summary-item";
 import { Grid } from "@mui/material";
 import { Cash as CashIcon } from "../icons/cash";
 import SavingsLink from "./SavingsLink";
-const tableHeaders = ["Order ID", "Date", "Amount ($)", "Status"];
+const tableHeaders = ["Gateway", "Amount ($)","Type", "Date", "Order Id"];
 const stats = [
   {
     content: "Investment",

@@ -13,7 +13,7 @@ import { OrdersTable } from "../components/orders-table";
 import { SummaryItem } from "../components/reports/summary-item";
 import { Grid } from "@mui/material";
 import VendorPay from "./VendorPay";
-const tableHeaders = ["Order ID", "Date", "Amount ($)", "Gateway"];
+const tableHeaders = ["Gateway", "Amount ($)", "Vendor", "Date", "Order Id"];
 const stats = [
   {
     content: "Pay vendor",

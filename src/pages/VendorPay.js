@@ -219,6 +219,7 @@ export default function BasicPopover({ name, myOrders, setMyOrders, setSuccessPa
                     amount={formik.values.amount}
                     setSuccessPay={setSuccessPay}
                     handleClose={handleClose}
+                    type={formik.values.vendor}
                   />
                 </Grid>
               </Grid>
