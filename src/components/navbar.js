@@ -44,7 +44,7 @@ export const Navbar = () => {
           }}
           variant="contained"
         >
-          Offline Mvp
+         OFFLINE MVP
         </Button>
       </Toolbar>
     </AppBar>
