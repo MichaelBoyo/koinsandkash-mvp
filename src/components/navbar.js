@@ -27,24 +27,25 @@ export const Navbar = () => {
           }}
         >
           <img
-            style={{ width: "200px" }}
+            style={{ width: "200px", height: "60px" }}
             alt="icon"
-            src="https://res.cloudinary.com/dfsn2ob9s/image/upload/v1667745789/Koinsandkash_wyo6en.png"
+            src="https://res.cloudinary.com/dfsn2ob9s/image/upload/v1668798109/build_your_networth_8_zjoyda.png"
           />
         </Box>
 
         <Box sx={{ flexGrow: 1 }} />
-
         <Button
           sx={{
             ml: 1,
           }}
           onClick={() => {
-            navigate("/");
+            window.location.href =
+              "https://ugofinance.notion.site/VENDORS-5b9a9e336d51498f8d9bf1e235eab516";
           }}
           variant="contained"
-          color="error"
-        ></Button>
+        >
+          Offline Mvp
+        </Button>
       </Toolbar>
     </AppBar>
   );

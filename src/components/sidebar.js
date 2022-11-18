@@ -12,10 +12,16 @@ import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
 
 const items = [
+  
   {
     href: "/",
     icon: PriceChangeIcon,
     label: "Pay a vendor",
+  },
+  {
+    href: "/exchange",
+    icon: CurrencyExchangeIcon,
+    label: "Global Transfers",
   },
   {
     href: "/assets",
@@ -23,11 +29,7 @@ const items = [
     label: "Financial Assets",
   },
 
-  {
-    href: "/exchange",
-    icon: CurrencyExchangeIcon,
-    label: "Global Transfers",
-  },
+
 ];
 
 export const Sidebar = () => {
