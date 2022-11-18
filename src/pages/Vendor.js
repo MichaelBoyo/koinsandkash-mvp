@@ -49,7 +49,7 @@ export const Vendor = () => {
         <Container maxWidth="lg">
           {successPay && (
             <Alert severity="success">
-              Payment setails sent to your Whatsapp
+              Payment details sent to your Whatsapp
             </Alert>
           )}
           <Box
