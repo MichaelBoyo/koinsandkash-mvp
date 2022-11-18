@@ -50,6 +50,7 @@ export const Exchange = () => {
         }}
       >
         <Container maxWidth="lg">
+          {successPay && <Alert severity="success">Payment successful</Alert>}
           <Typography color="textPrimary" variant="h4">
             Exchange
           </Typography>
@@ -78,7 +79,6 @@ export const Exchange = () => {
                 />
               </Grid>
             ))}
-            {successPay && <Alert severity="success">Payment successful</Alert>}
           </Box>
 
           <Card variant="outlined">

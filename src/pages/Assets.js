@@ -50,6 +50,7 @@ export const Assets = () => {
         }}
       >
         <Container maxWidth="lg">
+          {successPay && <Alert severity="success">Payment successful</Alert>}
           <Typography color="textPrimary" variant="h4">
             Financial Assets
           </Typography>
@@ -78,7 +79,6 @@ export const Assets = () => {
                 />
               </Grid>
             ))}
-            {successPay && <Alert severity="success">Payment successful</Alert>}
           </Box>
 
           <Card variant="outlined">
