@@ -26,7 +26,12 @@ const assets = [
   "Ethereum",
 ];
 
-export default function BasicPopover({ name, myOrders, setMyOrders }) {
+export default function BasicPopover({
+  name,
+  myOrders,
+  setMyOrders,
+  setSuccessPay,
+}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -249,6 +254,8 @@ export default function BasicPopover({ name, myOrders, setMyOrders }) {
                     myOrders={myOrders}
                     setMyOrders={setMyOrders}
                     amount={formik.values.amount}
+                    setSuccessPay={setSuccessPay}
+                    handleClose={handleClose}
                   />
                 </Grid>
               </Grid>

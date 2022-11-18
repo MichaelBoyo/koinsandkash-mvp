@@ -16,7 +16,7 @@ import {
 import OneLiquidity from "./OneLiquidity";
 const companySizeOptions = ["BTC", "USDT", "ETH", "BNB"];
 
-export default function BasicPopover({ name, myOrders, setMyOrders }) {
+export default function BasicPopover({ name, myOrders, setMyOrders, setSuccessPay }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -211,6 +211,8 @@ export default function BasicPopover({ name, myOrders, setMyOrders }) {
                     setMyOrders={setMyOrders}
                     name="exchange"
                     amount={formik.values.fullName}
+                    setSuccessPay={setSuccessPay}
+                    handleClose={handleClose}
                   />
                 </Grid>
               </Grid>

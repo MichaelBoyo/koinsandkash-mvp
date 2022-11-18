@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { Box, Card, Container, Typography } from "@mui/material";
 
 import { OrdersTable } from "../components/orders-table";
-
+import { Alert } from "@mui/material";
 import { Cube as CubeIcon } from "../icons/cube";
 import { SummaryItem } from "../components/reports/summary-item";
 import { Grid } from "@mui/material";
@@ -27,6 +27,15 @@ export const Assets = () => {
     ? JSON.parse(localStorage.getItem("assets"))
     : [];
   const [myOrders, setMyOrders] = useState(data);
+  const [successPay, setSuccessPay] = useState(false);
+
+  useEffect(() => {
+    if (successPay) {
+      setTimeout(() => {
+        setSuccessPay(false);
+      }, 3000);
+    }
+  });
 
   return (
     <>
@@ -44,6 +53,7 @@ export const Assets = () => {
           <Typography color="textPrimary" variant="h4">
             Financial Assets
           </Typography>
+
           <Box
             sx={{
               alignItems: "center",
@@ -61,12 +71,14 @@ export const Assets = () => {
                       myOrders={myOrders}
                       setMyOrders={setMyOrders}
                       name={item.content}
+                      setSuccessPay={setSuccessPay}
                     />
                   }
                   label={item.label}
                 />
               </Grid>
             ))}
+            {successPay && <Alert severity="success">Payment successful</Alert>}
           </Box>
 
           <Card variant="outlined">

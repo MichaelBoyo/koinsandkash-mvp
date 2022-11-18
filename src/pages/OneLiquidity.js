@@ -1,6 +1,5 @@
-import { useState } from "react";
 import axios from "axios";
-import { Alert, Button } from "@mui/material";
+import { Button } from "@mui/material";
 const oneLiquidity = axios.create({
   baseURL:
     "https://sandbox-api.oneliquidity.technology/integrator/v1/deposit/float",
@@ -10,8 +9,14 @@ const oneLiquidity = axios.create({
     authorization: `Bearer ${process.env.REACT_APP_ONELIQUIDITY_BEARER_TOKEN}`,
   },
 });
-const OneLiquidity = ({ amount, myOrders, setMyOrders, name }) => {
-  const [isLoaded, setIsLoaded] = useState(false);
+const OneLiquidity = ({
+  amount,
+  myOrders,
+  setMyOrders,
+  name,
+  setSuccessPay,
+  handleClose,
+}) => {
   const oneLiquidityPay = () => {
     const fetch = async () => {
       const res = await oneLiquidity
@@ -30,16 +35,14 @@ const OneLiquidity = ({ amount, myOrders, setMyOrders, name }) => {
         };
 
         localStorage.setItem(name, JSON.stringify([...myOrders, data]));
-
         setMyOrders([...myOrders, data]);
-        setIsLoaded(true);
+        handleClose();
+        setSuccessPay(true);
       }
     };
     fetch();
   };
-  if (isLoaded) {
-    return <Alert severity="success">Payment successful</Alert>;
-  }
+
   return (
     <Button onClick={oneLiquidityPay} variant="contained">
       Make payment
