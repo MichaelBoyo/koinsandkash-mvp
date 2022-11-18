@@ -8,10 +8,10 @@ import Links from "./Links";
 const tableHeaders = ["Gateway", "Amount ($)", "Type", "Date", "Order Id"];
 const stats = [
   {
-    content: "Crypto to Naira",
+    content: "Nigeria to Uk",
   },
   {
-    content: "Dollar to Naira",
+    content: "Nigeria to China",
   },
 ];
 export const Exchange = () => {
@@ -32,7 +32,7 @@ export const Exchange = () => {
   return (
     <>
       <Helmet>
-        <title>Exchange | Koins&Kash</title>
+        <title>Global Transfers | Koins&Kash</title>
       </Helmet>
       <Box
         sx={{
@@ -48,7 +48,7 @@ export const Exchange = () => {
             </Alert>
           )}
           <Typography color="textPrimary" variant="h4">
-            Exchange
+            Global Transfers
           </Typography>
 
           <Box
@@ -79,7 +79,7 @@ export const Exchange = () => {
 
           <Card variant="outlined">
             <Typography sx={{ ml: 2, mt: 1 }} color="textPrimary" variant="h4">
-              Exchange History
+              Global Transfers
             </Typography>
             <OrdersTable tableHeaders={tableHeaders} orders={myOrders} />
           </Card>

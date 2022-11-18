@@ -27,7 +27,7 @@ const items = [
   {
     href: "/exchange",
     icon: CurrencyExchangeIcon,
-    label: "Exchange Currency",
+    label: "Global Transfers",
   },
 ];
 
