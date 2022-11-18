@@ -202,7 +202,7 @@ export default function BasicPopover({ name, myOrders, setMyOrders, setSuccessPa
                 )}
                 <Grid item xs={12}>
                   <Typography color="textSecondary" variant="text">
-                    payment details will be sent to your email and
+                    payment details will be sent to your email
                   </Typography>
                 </Grid>
                 <Grid item xs={12}>
