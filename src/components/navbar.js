@@ -1,10 +1,9 @@
-import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 import { AppBar, Box, Toolbar } from "@mui/material";
 
 import Button from "@mui/material/Button";
 
 export const Navbar = () => {
-  const navigate = useNavigate();
   return (
     <AppBar elevation={0} sx={{ backgroundColor: "#1e212a" }}>
       <Toolbar
@@ -44,7 +43,7 @@ export const Navbar = () => {
           }}
           variant="contained"
         >
-         OFFLINE MVP
+          OFFLINE MVP
         </Button>
       </Toolbar>
     </AppBar>
