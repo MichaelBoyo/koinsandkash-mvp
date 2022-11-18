@@ -50,7 +50,7 @@ export const Exchange = () => {
         }}
       >
         <Container maxWidth="lg">
-          {successPay && <Alert severity="success">Payment successful</Alert>}
+          {successPay && <Alert severity="success">Payment setails sent to your whatsapp</Alert>}
           <Typography color="textPrimary" variant="h4">
             Exchange
           </Typography>

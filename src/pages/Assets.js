@@ -50,7 +50,7 @@ export const Assets = () => {
         }}
       >
         <Container maxWidth="lg">
-          {successPay && <Alert severity="success">Payment successful</Alert>}
+          {successPay && <Alert severity="success">Payment Details sent to your Whatsapp</Alert>}
           <Typography color="textPrimary" variant="h4">
             Financial Assets
           </Typography>

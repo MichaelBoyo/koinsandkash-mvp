@@ -25,7 +25,6 @@ const OneLiquidity = ({
           currency: "USD",
         })
         .catch((err) => console.log(err));
-
       if (res.status === 201) {
         const data = {
           id: Math.floor(1000 + Math.random() * 9000),

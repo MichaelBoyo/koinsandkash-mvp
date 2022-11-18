@@ -47,6 +47,11 @@ export const Vendor = () => {
         }}
       >
         <Container maxWidth="lg">
+          {successPay && (
+            <Alert severity="success">
+              Payment setails sent to your Whatsapp
+            </Alert>
+          )}
           <Box
             sx={{
               alignItems: "center",
@@ -71,9 +76,6 @@ export const Vendor = () => {
                 />
               </Grid>
             ))}
-            {successPay && (
-              <Alert severity="success">Payment successful</Alert>
-            )}
           </Box>
 
           <Card variant="outlined">
