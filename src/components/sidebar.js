@@ -6,58 +6,28 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
-import { Cog as CogIcon } from "../icons/cog";
-import { ShoppingCart as ShoppingCartIcon } from "../icons/shopping-cart";
-import { User as UserIcon } from "../icons/user";
-import PriceChangeIcon from "@mui/icons-material/PriceChange";
-import StorefrontIcon from "@mui/icons-material/Storefront";
-import SellIcon from "@mui/icons-material/Sell";
 
-import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
-import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
-import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
+import PriceChangeIcon from "@mui/icons-material/PriceChange";
+import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
+import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
+
 const items = [
+ 
   {
-    href: "/dashboard",
-    icon: UserIcon,
-    label: "Dashboard",
+    href: "/",
+    icon: PriceChangeIcon,
+    label: "Pay a vendor",
   },
   {
-    href: "/dashboard/assets",
+    href: "/assets",
     icon: BusinessCenterIcon,
     label: "Financial Assets",
   },
+
   {
-    href: "/dashboard/transfers",
-    icon: PriceChangeIcon,
-    label: 'Global Transfers',
-  },
-  {
-    href: "/dashboard/exchange",
+    href: "/exchange",
     icon: CurrencyExchangeIcon,
     label: "Exchange Currency",
-  },
-  {
-    href: "/dashboard/vendors",
-    icon: SellIcon,
-    label: "Vendors",
-  },
-
-  {
-    href: "/dashboard/credit",
-    icon: CardGiftcardIcon,
-    label: "Credit",
-  },
-
-  {
-    href: "/dashboard/settings",
-    icon: CogIcon,
-    label: "Settings",
-  },
-  {
-    href: "/dashboard/learning",
-    icon: UserIcon,
-    label: "Discover..",
   },
 ];
 

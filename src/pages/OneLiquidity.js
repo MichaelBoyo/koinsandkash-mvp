@@ -1,8 +1,7 @@
-import React from "react";
-import Button from "@mui/material/Button";
+import { useState } from "react";
 import axios from "axios";
-import Alert from "@mui/material/Alert";
-const seerbit = axios.create({
+import { Alert, Button } from "@mui/material";
+const oneLiquidity = axios.create({
   baseURL:
     "https://sandbox-api.oneliquidity.technology/integrator/v1/deposit/float",
   headers: {
@@ -11,11 +10,11 @@ const seerbit = axios.create({
     authorization: `Bearer ${process.env.REACT_APP_ONELIQUIDITY_BEARER_TOKEN}`,
   },
 });
-const Seerbit = ({ amount, handleClose, myOrders, setMyOrders }) => {
-  const [isLoaded, setIsLoaded] = React.useState(false);
-  const seerbitPay = () => {
+const OneLiquidity = ({ amount, myOrders, setMyOrders }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const oneLiquidityPay = () => {
     const fetch = async () => {
-      const res = await seerbit
+      const res = await oneLiquidity
         .post("", {
           amount: Number(`${amount}`),
           currency: "USD",
@@ -33,22 +32,18 @@ const Seerbit = ({ amount, handleClose, myOrders, setMyOrders }) => {
           },
         ]);
         setIsLoaded(true);
-    
-     
       }
     };
     fetch();
   };
   if (isLoaded) {
-    return (
-      <Alert severity="success">Payment successful</Alert>
-    );
+    return <Alert severity="success">Payment successful</Alert>;
   }
   return (
-    <Button onClick={seerbitPay} variant="contained">
+    <Button onClick={oneLiquidityPay} variant="contained">
       Make payment
     </Button>
   );
 };
 
-export default Seerbit;
+export default OneLiquidity;

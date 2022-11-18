@@ -43,7 +43,7 @@ export const OrdersTable = (props) => {
   return (
     <div>
       <Scrollbar>
-        <Table sx={{ minWidth: 1000 }}>
+        <Table sx={{ minWidth: 700 }}>
           <TableHead>
             {tableHeaders ? (
               <TableRow>
@@ -58,12 +58,7 @@ export const OrdersTable = (props) => {
                 })}
               </TableRow>
             ) : (
-              <TableRow>
-                <TableCell>Order</TableCell>
-                <TableCell>Date</TableCell>
-                <TableCell>Customer</TableCell>
-                <TableCell>Status</TableCell>
-              </TableRow>
+              ""
             )}
           </TableHead>
           <TableBody>
@@ -95,11 +90,7 @@ export const OrdersTable = (props) => {
                       </Typography>
                     </Box>
                   </TableCell>
-                  <TableCell>
-                    {tableHeaders
-                      ? `${order.totalAmount} `
-                      : `${order.customer.firstName} ${order.customer.lastName}`}
-                  </TableCell>
+                  <TableCell>{order.totalAmount}</TableCell>
                   <TableCell>
                     <Chip label={statusVariant.label} variant="outlined" />
                   </TableCell>

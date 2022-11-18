@@ -14,7 +14,14 @@ import {
   Typography,
 } from "@mui/material";
 import OneLiquidity from "./OneLiquidity";
-const companySizeOptions = ["BTC", "USDT", "ETH", "BNB"];
+const transactionTypeOptions = ["Deposit", "Withdraw"];
+const vendor = [
+  "Iya Moria",
+  "Bits and Byte",
+  "Gnome Wears",
+  "Kiki Fabics",
+  "Joels Exchange"
+];
 
 export default function BasicPopover({ name, myOrders, setMyOrders }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -28,28 +35,31 @@ export default function BasicPopover({ name, myOrders, setMyOrders }) {
   };
 
   const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
+  const id = open ? "simple-popover" : "";
   const formik = useFormik({
     initialValues: {
-      companyName: "",
-      companySize: "",
+      transactionType: "",
       email: "",
-      fullName: "",
-      jobTitle: "",
+      amount: "",
+      phone: "",
+      vendor: "",
       submit: null,
     },
     validationSchema: Yup.object().shape({
-      companyName: Yup.string().max(255).required("Bank name is required"),
-      companySize: Yup.string()
+      transactionType: Yup.string()
         .max(255)
-        .oneOf(companySizeOptions)
-        .required("Currency is required"),
+        .oneOf(transactionTypeOptions)
+        .required("Transaction is required"),
+      vendor: Yup.string()
+        .max(255)
+        .oneOf(vendor)
+        .required("vendor is required"),
       email: Yup.string()
         .email("Must be a valid email")
         .max(255)
         .required("Email is required"),
-      fullName: Yup.string().max(255).required("Amount is required"),
-      jobTitle: Yup.string().max(255).required("Account No is required"),
+      amount: Yup.string().max(255).required("Amount is required"),
+      phone: Yup.string().max(255).required("Phone Number is required"),
     }),
     onSubmit: async (values, helpers) => {
       try {
@@ -63,7 +73,7 @@ export default function BasicPopover({ name, myOrders, setMyOrders }) {
       }
     },
   });
-
+ 
   return (
     <div>
       <Button aria-describedby={id} variant="contained" onClick={handleClick}>
@@ -102,24 +112,6 @@ export default function BasicPopover({ name, myOrders, setMyOrders }) {
               <Grid container spacing={2} sx={{ maxWidth: 420 }}>
                 <Grid item xs={12}>
                   <TextField
-                    error={Boolean(
-                      formik.touched.fullName && formik.errors.fullName
-                    )}
-                    fullWidth
-                    helperText={
-                      formik.touched.fullName && formik.errors.fullName
-                    }
-                    label="$ Amount"
-                    name="fullName"
-                    onBlur={formik.handleBlur}
-                    onChange={formik.handleChange}
-                    value={formik.values.fullName}
-                    variant="outlined"
-                    type="number"
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
                     error={Boolean(formik.touched.email && formik.errors.email)}
                     fullWidth
                     helperText={formik.touched.email && formik.errors.email}
@@ -135,60 +127,73 @@ export default function BasicPopover({ name, myOrders, setMyOrders }) {
                 <Grid item xs={12}>
                   <TextField
                     error={Boolean(
-                      formik.touched.jobTitle && formik.errors.jobTitle
+                      formik.touched.amount && formik.errors.amount
                     )}
                     fullWidth
-                    helperText={
-                      formik.touched.jobTitle && formik.errors.jobTitle
-                    }
-                    label="Account No"
-                    name="jobTitle"
+                    helperText={formik.touched.amount && formik.errors.amount}
+                    label="Amount"
+                    name="amount"
                     onBlur={formik.handleBlur}
                     onChange={formik.handleChange}
-                    value={formik.values.jobTitle}
+                    value={formik.values.amount}
+                    variant="outlined"
+                    type="number"
+                  />
+                </Grid>
+
+                <Grid item xs={12}>
+                  <TextField
+                    error={Boolean(formik.touched.phone && formik.errors.phone)}
+                    fullWidth
+                    helperText={formik.touched.phone && formik.errors.phone}
+                    label="Phone No Call"
+                    name="phone"
+                    onBlur={formik.handleBlur}
+                    onChange={formik.handleChange}
+                    value={formik.values.phone}
                     variant="outlined"
                   />
                 </Grid>
                 <Grid item xs={12}>
                   <TextField
-                    error={Boolean(
-                      formik.touched.companyName && formik.errors.companyName
-                    )}
+                    error={Boolean(formik.touched.phone && formik.errors.phone)}
                     fullWidth
-                    helperText={
-                      formik.touched.companyName && formik.errors.companyName
-                    }
-                    label="Bank name"
-                    name="companyName"
+                    helperText={formik.touched.phone && formik.errors.phone}
+                    label="Phone No Whatsapp"
+                    name="phone"
                     onBlur={formik.handleBlur}
                     onChange={formik.handleChange}
-                    value={formik.values.companyName}
+                    value={formik.values.phone}
                     variant="outlined"
                   />
                 </Grid>
+               
+
                 <Grid item xs={12}>
                   <TextField
                     error={Boolean(
-                      formik.touched.companySize && formik.errors.companySize
+                      formik.touched.transactionType &&
+                        formik.errors.transactionType
                     )}
                     fullWidth
                     helperText={
-                      formik.touched.companySize && formik.errors.companySize
+                      formik.touched.transactionType &&
+                      formik.errors.transactionType
                     }
-                    label="Currency"
-                    name="companySize"
+                    label="Vendor"
+                    name="vendor"
                     onBlur={formik.handleBlur}
                     onChange={formik.handleChange}
                     select
-                    value={formik.values.companySize}
+                    value={formik.values.vendor}
                     variant="outlined"
                   >
-                    {companySizeOptions.map((companySizeOption) => (
+                    {vendor.map((transactionTypeOption) => (
                       <MenuItem
-                        key={companySizeOption}
-                        value={companySizeOption}
+                        key={transactionTypeOption}
+                        value={transactionTypeOption}
                       >
-                        {companySizeOption}
+                        {transactionTypeOption}
                       </MenuItem>
                     ))}
                   </TextField>
@@ -202,15 +207,16 @@ export default function BasicPopover({ name, myOrders, setMyOrders }) {
                 )}
                 <Grid item xs={12}>
                   <Typography color="textSecondary" variant="text">
-                    payment details will be sent to your email and
+                    Account details will either be sent to your whatsApp within
+                    10 minutes. Kindly ensure you make the transfer within 10
+                    minutes once you receive it. The account expires.
                   </Typography>
                 </Grid>
                 <Grid item xs={12}>
                   <OneLiquidity
                     myOrders={myOrders}
                     setMyOrders={setMyOrders}
-                    
-                    amount={formik.values.fullName}
+                    amount={formik.values.amount}
                   />
                 </Grid>
               </Grid>

@@ -1,34 +1,24 @@
 import { useState } from "react";
 import { Helmet } from "react-helmet";
-import { Box, Card, Container, Typography } from "@mui/material";
+import { Box, Card, Container, Divider, Typography } from "@mui/material";
 
 import { OrdersTable } from "../components/orders-table";
-
-import { Cube as CubeIcon } from "../icons/cube";
 import { SummaryItem } from "../components/reports/summary-item";
 import { Grid } from "@mui/material";
-import { Cash as CashIcon } from "../icons/cash";
-import Links from "./Links";
-const tableHeaders = ["Order ID", "Date", "Amount ($)", "Payment Gateway"];
+import VendorPay from "./VendorPay";
+const tableHeaders = ["Order ID", "Date", "Amount ($)", "Status"];
 const stats = [
   {
-    content: "Crypto to Naira",
-    icon: CubeIcon,
-    label: "C2N",
-  },
-  {
-    content: "Dollar to Naira",
-    icon: CashIcon,
-    label: "D2N",
+    content: "Pay vendor",
   },
 ];
-export const Exchange = () => {
+export const Vendor = () => {
   const [myOrders, setMyOrders] = useState([]);
 
   return (
     <>
       <Helmet>
-        <title>Exchange | Koins&Kash</title>
+        <title>Pay A Vendor | Koins&Kash</title>
       </Helmet>
       <Box
         sx={{
@@ -38,9 +28,6 @@ export const Exchange = () => {
         }}
       >
         <Container maxWidth="lg">
-          <Typography color="textPrimary" variant="h4">
-            Exchange
-          </Typography>
           <Box
             sx={{
               alignItems: "center",
@@ -54,7 +41,7 @@ export const Exchange = () => {
                   content={item.content}
                   icon={item.icon}
                   button={
-                    <Links
+                    <VendorPay
                       myOrders={myOrders}
                       setMyOrders={setMyOrders}
                       name={item.content}
@@ -68,8 +55,10 @@ export const Exchange = () => {
 
           <Card variant="outlined">
             <Typography sx={{ ml: 2, mt: 1 }} color="textPrimary" variant="h4">
-              Exchange History
+              Payment History
             </Typography>
+
+            <Divider />
             <OrdersTable tableHeaders={tableHeaders} orders={myOrders} />
           </Card>
         </Container>

@@ -25,7 +25,7 @@ export const Footer = () => (
           color="textSecondary"
           variant="body2"
         >
-          © 2021 TbTheCoder
+          © 2022 KoinsAndKash
         </Typography>
        
       </Box>

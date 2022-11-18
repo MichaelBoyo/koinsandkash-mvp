@@ -1,7 +1,6 @@
 import * as React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-
 import {
   Box,
   Button,
@@ -13,9 +12,9 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-
+import OneLiquidity from "./OneLiquidity";
 const transactionTypeOptions = ["Deposit", "Withdraw"];
-const transactionTypeOption2 = [
+const assets = [
   "Dollar Savings (BUSD)",
   "US Stocks (equity) - S&P 500",
   "International Commodities (oil, agric, metals) - S&P GSCI",
@@ -27,7 +26,7 @@ const transactionTypeOption2 = [
   "Ethereum",
 ];
 
-export default function BasicPopover({ name }) {
+export default function BasicPopover({ name, myOrders, setMyOrders }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -39,28 +38,31 @@ export default function BasicPopover({ name }) {
   };
 
   const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
+  const id = open ? "simple-popover" : "";
   const formik = useFormik({
     initialValues: {
-      companyName: "",
       transactionType: "",
       email: "",
-      fullName: "",
-      jobTitle: "",
+      amount: "",
+      phone: "",
+      assets: "",
       submit: null,
     },
     validationSchema: Yup.object().shape({
-      companyName: Yup.string().max(255).required("Company name is required"),
       transactionType: Yup.string()
         .max(255)
         .oneOf(transactionTypeOptions)
-        .required("Currency is required"),
+        .required("Transaction is required"),
+      assets: Yup.string()
+        .max(255)
+        .oneOf(assets)
+        .required("assets is required"),
       email: Yup.string()
         .email("Must be a valid email")
         .max(255)
         .required("Email is required"),
-      fullName: Yup.string().max(255).required("Amount is required"),
-      jobTitle: Yup.string().max(255).required("Phone Number is required"),
+      amount: Yup.string().max(255).required("Amount is required"),
+      phone: Yup.string().max(255).required("Phone Number is required"),
     }),
     onSubmit: async (values, helpers) => {
       try {
@@ -74,6 +76,7 @@ export default function BasicPopover({ name }) {
       }
     },
   });
+
   return (
     <div>
       <Button aria-describedby={id} variant="contained" onClick={handleClick}>
@@ -127,17 +130,15 @@ export default function BasicPopover({ name }) {
                 <Grid item xs={12}>
                   <TextField
                     error={Boolean(
-                      formik.touched.fullName && formik.errors.fullName
+                      formik.touched.amount && formik.errors.amount
                     )}
                     fullWidth
-                    helperText={
-                      formik.touched.fullName && formik.errors.fullName
-                    }
+                    helperText={formik.touched.amount && formik.errors.amount}
                     label="Amount"
-                    name="fullName"
+                    name="amount"
                     onBlur={formik.handleBlur}
                     onChange={formik.handleChange}
-                    value={formik.values.fullName}
+                    value={formik.values.amount}
                     variant="outlined"
                     type="number"
                   />
@@ -145,49 +146,43 @@ export default function BasicPopover({ name }) {
 
                 <Grid item xs={12}>
                   <TextField
-                    error={Boolean(
-                      formik.touched.jobTitle && formik.errors.jobTitle
-                    )}
+                    error={Boolean(formik.touched.phone && formik.errors.phone)}
                     fullWidth
-                    helperText={
-                      formik.touched.jobTitle && formik.errors.jobTitle
-                    }
+                    helperText={formik.touched.phone && formik.errors.phone}
                     label="Phone No Call"
-                    name="jobTitle"
+                    name="phone"
                     onBlur={formik.handleBlur}
                     onChange={formik.handleChange}
-                    value={formik.values.jobTitle}
+                    value={formik.values.phone}
                     variant="outlined"
                   />
                 </Grid>
                 <Grid item xs={12}>
                   <TextField
-                    error={Boolean(
-                      formik.touched.jobTitle && formik.errors.jobTitle
-                    )}
+                    error={Boolean(formik.touched.phone && formik.errors.phone)}
                     fullWidth
-                    helperText={
-                      formik.touched.jobTitle && formik.errors.jobTitle
-                    }
+                    helperText={formik.touched.phone && formik.errors.phone}
                     label="Phone No Whatsapp"
-                    name="jobTitle"
+                    name="phone"
                     onBlur={formik.handleBlur}
                     onChange={formik.handleChange}
-                    value={formik.values.jobTitle}
+                    value={formik.values.phone}
                     variant="outlined"
                   />
                 </Grid>
                 <Grid item xs={12}>
                   <TextField
                     error={Boolean(
-                      formik.touched.transactionType && formik.errors.transactionType
+                      formik.touched.transactionType &&
+                        formik.errors.transactionType
                     )}
                     fullWidth
                     helperText={
-                      formik.touched.transactionType && formik.errors.transactionType
+                      formik.touched.transactionType &&
+                      formik.errors.transactionType
                     }
                     label="Transation type"
-                    name="transaction type"
+                    name="transactionType"
                     onBlur={formik.handleBlur}
                     onChange={formik.handleChange}
                     select
@@ -208,21 +203,23 @@ export default function BasicPopover({ name }) {
                 <Grid item xs={12}>
                   <TextField
                     error={Boolean(
-                      formik.touched.transactionType && formik.errors.transactionType
+                      formik.touched.transactionType &&
+                        formik.errors.transactionType
                     )}
                     fullWidth
                     helperText={
-                      formik.touched.transactionType && formik.errors.transactionType
+                      formik.touched.transactionType &&
+                      formik.errors.transactionType
                     }
                     label="Asset"
                     name="assets"
                     onBlur={formik.handleBlur}
                     onChange={formik.handleChange}
                     select
-                    value={formik.values.transactionType}
+                    value={formik.values.assets}
                     variant="outlined"
                   >
-                    {transactionTypeOption2.map((transactionTypeOption) => (
+                    {assets.map((transactionTypeOption) => (
                       <MenuItem
                         key={transactionTypeOption}
                         value={transactionTypeOption}
@@ -247,14 +244,11 @@ export default function BasicPopover({ name }) {
                   </Typography>
                 </Grid>
                 <Grid item xs={12}>
-                  <Button
-                    color="primary"
-                    size="large"
-                    type="submit"
-                    variant="contained"
-                  >
-                    Make Payment
-                  </Button>
+                  <OneLiquidity
+                    myOrders={myOrders}
+                    setMyOrders={setMyOrders}
+                    amount={formik.values.amount}
+                  />
                 </Grid>
               </Grid>
             </div>

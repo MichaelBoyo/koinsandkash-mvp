@@ -34,7 +34,7 @@ export const NotFound = () => (
         color="primary"
         component={RouterLink}
         sx={{ mt: 2 }}
-        to="/dashboard"
+        to="/"
         variant="text"
       >
         Take me Back
