@@ -79,7 +79,7 @@ export const Exchange = () => {
 
           <Card variant="outlined">
             <Typography sx={{ ml: 2, mt: 1 }} color="textPrimary" variant="h4">
-              Global Transfers
+             Transactions
             </Typography>
             <OrdersTable tableHeaders={tableHeaders} orders={myOrders} />
           </Card>
