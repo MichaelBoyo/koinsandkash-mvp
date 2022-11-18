@@ -1,25 +1,17 @@
 import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { Alert, Box, Card, Container, Typography } from "@mui/material";
-
 import { OrdersTable } from "../components/orders-table";
-
-import { Cube as CubeIcon } from "../icons/cube";
 import { SummaryItem } from "../components/reports/summary-item";
 import { Grid } from "@mui/material";
-import { Cash as CashIcon } from "../icons/cash";
 import Links from "./Links";
-const tableHeaders = ["Gateway", "Amount ($)","Type", "Date", "Order Id"];
+const tableHeaders = ["Gateway", "Amount ($)", "Type", "Date", "Order Id"];
 const stats = [
   {
     content: "Crypto to Naira",
-    icon: CubeIcon,
-    label: "C2N",
   },
   {
     content: "Dollar to Naira",
-    icon: CashIcon,
-    label: "D2N",
   },
 ];
 export const Exchange = () => {
@@ -50,7 +42,11 @@ export const Exchange = () => {
         }}
       >
         <Container maxWidth="lg">
-          {successPay && <Alert severity="success">Payment details sent to your whatsapp</Alert>}
+          {successPay && (
+            <Alert severity="success">
+              Payment details sent to your whatsapp
+            </Alert>
+          )}
           <Typography color="textPrimary" variant="h4">
             Exchange
           </Typography>

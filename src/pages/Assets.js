@@ -4,22 +4,16 @@ import { Box, Card, Container, Typography } from "@mui/material";
 
 import { OrdersTable } from "../components/orders-table";
 import { Alert } from "@mui/material";
-import { Cube as CubeIcon } from "../icons/cube";
 import { SummaryItem } from "../components/reports/summary-item";
 import { Grid } from "@mui/material";
-import { Cash as CashIcon } from "../icons/cash";
 import SavingsLink from "./SavingsLink";
-const tableHeaders = ["Gateway", "Amount ($)","Type", "Date", "Order Id"];
+const tableHeaders = ["Gateway", "Amount ($)", "Type", "Date", "Order Id"];
 const stats = [
   {
     content: "Investment",
-    icon: CubeIcon,
-    label: "INV",
   },
   {
     content: "Savings",
-    icon: CashIcon,
-    label: "SVN",
   },
 ];
 export const Assets = () => {
@@ -50,7 +44,11 @@ export const Assets = () => {
         }}
       >
         <Container maxWidth="lg">
-          {successPay && <Alert severity="success">Payment Details sent to your Whatsapp</Alert>}
+          {successPay && (
+            <Alert severity="success">
+              Payment Details sent to your Whatsapp
+            </Alert>
+          )}
           <Typography color="textPrimary" variant="h4">
             Financial Assets
           </Typography>

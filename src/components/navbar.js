@@ -1,6 +1,6 @@
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { AppBar, Box, Toolbar } from "@mui/material";
-import LogoutIcon from "@mui/icons-material/Logout";
+
 import Button from "@mui/material/Button";
 
 export const Navbar = () => {
