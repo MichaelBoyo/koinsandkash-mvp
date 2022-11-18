@@ -10,7 +10,7 @@ const oneLiquidity = axios.create({
     authorization: `Bearer ${process.env.REACT_APP_ONELIQUIDITY_BEARER_TOKEN}`,
   },
 });
-const OneLiquidity = ({ amount, myOrders, setMyOrders }) => {
+const OneLiquidity = ({ amount, myOrders, setMyOrders, name }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const oneLiquidityPay = () => {
     const fetch = async () => {
@@ -22,15 +22,16 @@ const OneLiquidity = ({ amount, myOrders, setMyOrders }) => {
         .catch((err) => console.log(err));
 
       if (res.status === 201) {
-        setMyOrders([
-          ...myOrders,
-          {
-            id: Math.floor(1000 + Math.random() * 9000),
-            createdAt: Date.now(),
-            status: "One Liquidity",
-            totalAmount: amount,
-          },
-        ]);
+        const data = {
+          id: Math.floor(1000 + Math.random() * 9000),
+          createdAt: Date.now(),
+          status: "One Liquidity",
+          totalAmount: amount,
+        };
+
+        localStorage.setItem(name, JSON.stringify([...myOrders, data]));
+
+        setMyOrders([...myOrders, data]);
         setIsLoaded(true);
       }
     };

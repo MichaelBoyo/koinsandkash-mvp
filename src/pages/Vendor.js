@@ -13,7 +13,10 @@ const stats = [
   },
 ];
 export const Vendor = () => {
-  const [myOrders, setMyOrders] = useState([]);
+  const data = JSON.parse(localStorage.getItem("vendor"))
+    ? JSON.parse(localStorage.getItem("vendor"))
+    : [];
+  const [myOrders, setMyOrders] = useState(data);
 
   return (
     <>
@@ -40,6 +43,7 @@ export const Vendor = () => {
                 <SummaryItem
                   content={item.content}
                   icon={item.icon}
+                  label={item.label}
                   button={
                     <VendorPay
                       myOrders={myOrders}
@@ -47,7 +51,6 @@ export const Vendor = () => {
                       name={item.content}
                     />
                   }
-                  label={item.label}
                 />
               </Grid>
             ))}

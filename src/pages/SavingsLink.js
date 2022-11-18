@@ -245,6 +245,7 @@ export default function BasicPopover({ name, myOrders, setMyOrders }) {
                 </Grid>
                 <Grid item xs={12}>
                   <OneLiquidity
+                    name="assets"
                     myOrders={myOrders}
                     setMyOrders={setMyOrders}
                     amount={formik.values.amount}

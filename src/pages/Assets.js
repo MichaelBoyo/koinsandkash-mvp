@@ -23,7 +23,10 @@ const stats = [
   },
 ];
 export const Assets = () => {
-  const [myOrders, setMyOrders] = useState([]);
+  const data = JSON.parse(localStorage.getItem("assets"))
+    ? JSON.parse(localStorage.getItem("assets"))
+    : [];
+  const [myOrders, setMyOrders] = useState(data);
 
   return (
     <>

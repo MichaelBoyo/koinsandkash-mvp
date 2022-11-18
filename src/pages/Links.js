@@ -209,7 +209,7 @@ export default function BasicPopover({ name, myOrders, setMyOrders }) {
                   <OneLiquidity
                     myOrders={myOrders}
                     setMyOrders={setMyOrders}
-                    
+                    name="exchange"
                     amount={formik.values.fullName}
                   />
                 </Grid>
